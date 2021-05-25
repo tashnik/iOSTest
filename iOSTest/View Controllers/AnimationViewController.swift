@@ -5,6 +5,7 @@
 //  Copyright © 2020 Rapptr Labs. All rights reserved.
 
 import UIKit
+import AVFoundation
 
 class AnimationViewController: UIViewController {
   
@@ -33,6 +34,8 @@ class AnimationViewController: UIViewController {
     logoViewOrigin = logoImage.frame.origin
   }
   
+  var audioPlayer: AVAudioPlayer?
+  
   var fadeButtonPressed = false
   var logoViewOrigin: CGPoint!
   
@@ -47,6 +50,16 @@ class AnimationViewController: UIViewController {
   
   @IBAction func didPressFade(_ sender: Any) {
     fadeButtonPressed.toggle()
+    
+    let pathToSound = Bundle.main.path(forResource: "beep", ofType: "wav")!
+    let url = URL(fileURLWithPath: pathToSound)
+    
+    do {
+      audioPlayer = try AVAudioPlayer(contentsOf: url)
+      audioPlayer?.play()
+    } catch {
+      print("Didn't play sound")
+    }
     
     if fadeButtonPressed {
       UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
@@ -80,9 +93,21 @@ class AnimationViewController: UIViewController {
       logoView!.center = CGPoint(x: (logoView!.center.x) + translation.x, y: ((logoView?.center.y)!) + translation.y)
       
       sender.setTranslation(CGPoint.zero, in: view)
+      
+     
     case .ended:
       UIView.animate(withDuration: 0.5) {
         self.logoImage.frame.origin = self.logoViewOrigin
+      }
+      
+      let pathToSound = Bundle.main.path(forResource: "D", ofType: "wav")!
+      let url = URL(fileURLWithPath: pathToSound)
+      
+      do {
+        audioPlayer = try AVAudioPlayer(contentsOf: url)
+        audioPlayer?.play()
+      } catch {
+        print("Didn't play sound")
       }
     case .possible:
       break
