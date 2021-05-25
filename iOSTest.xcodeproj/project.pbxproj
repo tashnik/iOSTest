@@ -17,7 +17,7 @@
 		2A09483E265BCB8D00C0B1B4 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09483D265BCB8D00C0B1B4 /* Errors.swift */; };
 		2A094840265BFA6300C0B1B4 /* UserMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A09483F265BFA6300C0B1B4 /* UserMessage.swift */; };
 		2A7D92F0265D4AB500CBC8A4 /* D.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A7D92EF265D4AB500CBC8A4 /* D.wav */; };
-		2A7D92F2265D4CF800CBC8A4 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A7D92F1265D4CF800CBC8A4 /* beep.wav */; };
+		2A7D92F4265D675000CBC8A4 /* explosion.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2A7D92F3265D675000CBC8A4 /* explosion.wav */; };
 		6900F5E121BF4726007AFBB8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6900F5E021BF4726007AFBB8 /* Assets.xcassets */; };
 		F21312DA1E0481F80029E33F /* ChatClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F21312D71E0481F80029E33F /* ChatClient.m */; };
 		F21312DB1E0481F80029E33F /* LoginClient.m in Sources */ = {isa = PBXBuildFile; fileRef = F21312D91E0481F80029E33F /* LoginClient.m */; };
@@ -49,7 +49,7 @@
 		2A09483D265BCB8D00C0B1B4 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		2A09483F265BFA6300C0B1B4 /* UserMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMessage.swift; sourceTree = "<group>"; };
 		2A7D92EF265D4AB500CBC8A4 /* D.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = D.wav; sourceTree = "<group>"; };
-		2A7D92F1265D4CF800CBC8A4 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
+		2A7D92F3265D675000CBC8A4 /* explosion.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = explosion.wav; sourceTree = "<group>"; };
 		6900F5E021BF4726007AFBB8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F21312D61E0481F80029E33F /* ChatClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChatClient.h; path = Clients/ChatClient.h; sourceTree = "<group>"; };
 		F21312D71E0481F80029E33F /* ChatClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChatClient.m; path = Clients/ChatClient.m; sourceTree = "<group>"; };
@@ -135,7 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				2A7D92EF265D4AB500CBC8A4 /* D.wav */,
-				2A7D92F1265D4CF800CBC8A4 /* beep.wav */,
+				2A7D92F3265D675000CBC8A4 /* explosion.wav */,
 			);
 			name = Sounds;
 			sourceTree = "<group>";
@@ -343,13 +343,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A7D92F4265D675000CBC8A4 /* explosion.wav in Resources */,
 				F264BDD71D7F642200275D46 /* LoginViewController.xib in Resources */,
 				F264BDBE1D7F52E500275D46 /* LaunchScreen.xib in Resources */,
 				F264BDB71D7F503300275D46 /* MenuViewController.xib in Resources */,
 				F264BDD21D7F641200275D46 /* ChatViewController.xib in Resources */,
 				6900F5E121BF4726007AFBB8 /* Assets.xcassets in Resources */,
 				2A7D92F0265D4AB500CBC8A4 /* D.wav in Resources */,
-				2A7D92F2265D4CF800CBC8A4 /* beep.wav in Resources */,
 				F21312E11E0485B50029E33F /* AnimationViewController.xib in Resources */,
 				F2603FCC202A404D001BCA22 /* ChatTableViewCell.xib in Resources */,
 			);

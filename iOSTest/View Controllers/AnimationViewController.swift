@@ -32,8 +32,13 @@ class AnimationViewController: UIViewController {
     addPanGesture(view: logoImage)
     
     logoViewOrigin = logoImage.frame.origin
+    
+    configureMolten()
+    configureAnimations()
   }
   
+  let animator = UIViewPropertyAnimator(duration: 1.0, curve: .linear)
+  var timer: Timer?
   var audioPlayer: AVAudioPlayer?
   
   var fadeButtonPressed = false
@@ -41,6 +46,7 @@ class AnimationViewController: UIViewController {
   
   @IBOutlet weak var fadeButton: UIButton!
   @IBOutlet weak var logoImage: UIImageView!
+  @IBOutlet weak var moltenImage: UIImageView!
   
   // MARK: - Actions
   @IBAction func backAction(_ sender: Any) {
@@ -51,9 +57,9 @@ class AnimationViewController: UIViewController {
   @IBAction func didPressFade(_ sender: Any) {
     fadeButtonPressed.toggle()
     
-    let pathToSound = Bundle.main.path(forResource: "beep", ofType: "wav")!
+    let pathToSound = Bundle.main.path(forResource: "explosion", ofType: "wav")!
     let url = URL(fileURLWithPath: pathToSound)
-    
+
     do {
       audioPlayer = try AVAudioPlayer(contentsOf: url)
       audioPlayer?.play()
@@ -66,6 +72,8 @@ class AnimationViewController: UIViewController {
           self.logoImage.alpha = 0.0
       }, completion: nil)
       fadeButton.setTitle("FADE IN", for: .normal)
+      
+      configureTimerUp()
     } else {
       UIView.animate(withDuration: 0.5, delay: 0.5, options: .curveEaseOut, animations: {
           self.logoImage.alpha = 1.0
@@ -117,6 +125,31 @@ class AnimationViewController: UIViewController {
       break
     @unknown default:
       break
+    }
+  }
+  
+  func configureMolten() {
+    moltenImage.alpha = 0.0
+    moltenImage.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+  }
+  
+  func configureAnimations() {
+    animator.addAnimations {
+      self.moltenImage.alpha = 1.0
+      self.moltenImage.transform = CGAffineTransform(scaleX: 6, y: 6)
+    }
+  }
+  
+  func configureTimerUp() {
+    timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(runTimedCode), userInfo: nil, repeats: true)
+  }
+  
+  @objc func runTimedCode() {
+    if animator.fractionComplete < 1 {
+      animator.fractionComplete += 0.05
+    } else {
+      animator.stopAnimation(true)
+      animator.finishAnimation(at: .current)
     }
   }
 }
